@@ -1,6 +1,6 @@
 #include <REGX52.H>
 unsigned char NixieTable[]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
-unsigned int Location,Num;
+int Location,Num;
 void Delay(unsigned int xms)
 {
 	unsigned char i, j;
@@ -45,7 +45,7 @@ void main()
 			
 			Location++;
 			if(Location>8)
-				Location=0;
+				Location=1;
 		}
 		if(P3_0==0)
 		{
@@ -54,7 +54,7 @@ void main()
 			Delay(20);
 			
 			Location--;
-			if(Location<=0)
+			if(Location<1)
 				Location=8;
 		}
 		if(P3_2==0)
@@ -74,7 +74,7 @@ void main()
 			Delay(20);
 			
 			Num--;
-			if(Num<=0)
+			if(Num<0)
 				Num=9;
 		}
 	}
